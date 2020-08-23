@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Spring Boot User Authentication</title>
+    <title>Sign In</title>
 </head>
 <body>
 <form role="form" th:action="@{/sign-in}" th:method="post">
-    <lable>Username</lable>
+    <label>Username</label>
     <input type="text" id="username" name="username">
 
-    <lable>Password</lable>
+    <label>Password</label>
     <input type="password" id="password" name="password">
 
     <input type="submit">

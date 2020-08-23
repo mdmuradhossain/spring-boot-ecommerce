@@ -15,11 +15,11 @@ import io.murad.modern.ecommerce.service.UserService;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
 	private UserService userService;
 
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-
 		return new BCryptPasswordEncoder();
 	}
 
@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests().antMatchers("/sign-up/**", "/sign-in/**").permitAll().anyRequest().authenticated()
 				.and()
-				.formLogin()
+				.formLogin().usernameParameter("username").passwordParameter("password")
 				.loginPage("/signIn").permitAll();
 	}
 
