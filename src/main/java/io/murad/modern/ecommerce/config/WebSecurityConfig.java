@@ -30,7 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests().antMatchers("/sign-up/**", "/sign-in/**").permitAll().anyRequest().authenticated()
 				.and()
 				.formLogin().usernameParameter("username").passwordParameter("password")
-				.loginPage("/signIn").permitAll();
+				.loginPage("/sign-in")
+				.defaultSuccessUrl("/",true)
+				.failureUrl("/login.html?error=true")
+				.permitAll();
 	}
 
 	@Autowired
