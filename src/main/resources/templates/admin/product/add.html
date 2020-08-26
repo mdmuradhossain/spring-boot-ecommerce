@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout}"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/layout.html :: headerfiles">
+<meta charset="ISO-8859-1">
+<title></title>
+</head>
+<body>
+	<header th:insert="fragments/adminTopNav::topNav"> </header>
+	<div class="container-fluid" layout:fragment="content">
+		<div class="row">
+
+			<div class="col-md-4">
+				<nav th:insert="fragments/adminSideNav::sideNav"></nav>
+			</div>
+			<div class="col-md-8">
+				<form th:action="@{/admin/products/addProduct}" th:object="${product}"
+					method="post">
+					<div class="form-group">
+						<label for="title">Product Name</label> <input type="text"
+							class="form-control" id="title" th:field="*{productName}">
+					</div>
+					<div class="form-group">
+						<label for="title">Product Price</label> <input type="text"
+							class="form-control" id="title" th:field="*{productName}">
+					</div>
+					<div class="form-group">
+						<label for="postCategory">Category</label> <select
+							class="form-control" id="" name="categoryId">
+							<option th:each="category : ${categories}"
+								th:value="${category.id}" th:text="${category.categoryName}"></option>
+						</select>
+					</div>
+				
+					<!-- <input type="hidden" name="postId" th:value="*{post.id}"/> -->
+					<div class="form-group">
+						<label for="exampleFormControlTextarea1">Product Description</label>
+						<textarea class="form-control" id="content" rows="3"
+							th:field="*{productDescription}"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
