@@ -72,7 +72,7 @@ public class HomeController {
 	@RequestMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("classActiveLogin", true);
-		return "myAccount";
+		return "front/myAccount";
 	}
 	
 	@RequestMapping("/hours")
@@ -135,7 +135,7 @@ public class HomeController {
 		
 		if (user == null) {
 			model.addAttribute("emailNotExist", true);
-			return "myAccount";
+			return "front/myAccount";
 		}
 		
 		String password = SecurityUtility.randomPassword();
@@ -179,7 +179,7 @@ public class HomeController {
 		model.addAttribute("stateList", stateList);
 		model.addAttribute("classActiveEdit", true);
 		
-		return "myProfile";
+		return "front/myProfile";
 	}
 	
 	@RequestMapping("/listOfCreditCards")
